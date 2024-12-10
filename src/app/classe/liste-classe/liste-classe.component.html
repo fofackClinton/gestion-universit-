@@ -1,0 +1,35 @@
+
+
+<!-- /.card-header -->
+<div class="card-body">
+  <table id="example1" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>code</th>
+      <th>nom</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let classe of classeList">
+            <td>{{classe.codeClasse}}</td>
+            <td>{{classe.nomClasse}}</td>
+            <td><img style="width:300px; height:300px " src="" alt=""> </td>
+            <td>
+              <a href="" class="btn btn-warning">detail</a>
+                <a href="" class="btn btn-primary">Modifier</a>
+                <a href="" class="btn btn-danger">Supprimer</a>
+            </td>
+          </tr>
+
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>code</th>
+        <th>nom</th>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+<!-- /.card-body -->
+
