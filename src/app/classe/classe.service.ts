@@ -6,12 +6,14 @@ import { catchError, Observable, of, tap } from 'rxjs';
 @Injectable()
 export class ClasseService {
 
+  private BASE_URL = 'http://localhost:8189';
+
   //injection de l'http clientmodule
   constructor(private http: HttpClient){}
 
   //récupération de la liste des classes
   getClasse(): Observable<Classe[]>{
-      return this.http.get<Classe[]>('localhost:8190/api/classe').pipe
+      return this.http.get<Classe[]>(this.BASE_URL + '/api/classe').pipe
       (
         tap((response) => this.log(response)),
         catchError((error)=> this.handleError(error, undefined))
@@ -20,7 +22,7 @@ export class ClasseService {
 
   //récupération d'une classe à partir de son ID
   getById(classeID: number): Observable<Classe|undefined > {
-    return this.http.get<Classe>(`localhost:8190/api/classe/${classeID}`).pipe
+    return this.http.get<Classe>(this.BASE_URL +`/api/classe/${classeID}`).pipe
     (
       tap((response) => this.log(response)),
       catchError((error)=> this.handleError(error, undefined))
@@ -34,7 +36,7 @@ export class ClasseService {
     const httpOptions = {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' })
     };
-    return this.http.put('localhost:8190/api/classe',classe,httpOptions).pipe
+    return this.http.put(this.BASE_URL +'/api/classe',classe,httpOptions).pipe
     (
       tap((response) => this.log(response)),
       catchError((error)=> this.handleError(error, undefined))
@@ -57,7 +59,7 @@ export class ClasseService {
 
   //supression d'une classe
   deletetById(classeID: number): Observable<Classe|undefined > {
-    return this.http.delete<Classe>(`localhost:8190/api/classe/${classeID}`).pipe
+    return this.http.delete<Classe>(`localhost:8189/api/classe/${classeID}`).pipe
     (
       tap((response) => this.log(response)),
       catchError((error)=> this.handleError(error, undefined))

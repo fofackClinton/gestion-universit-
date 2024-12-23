@@ -10,6 +10,7 @@ import { ModifierClasseComponent } from './modifier-classe/modifier-classe.compo
 const ClasseRoutes: Routes = [
   { path: 'classe', component:ListeClasseComponent},
   { path: 'classe-detail/:id', component: DetailClasseComponent },
+  {path: 'classe/:id/edit', component: ModifierClasseComponent}
 
 ];
 @NgModule({
